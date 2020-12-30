@@ -1,0 +1,39 @@
+body {
+}
+
+#navTitle {
+  font-size: 40px;
+}
+
+#cityInfo {
+  background-color: grey;
+}
+
+#cityStats {
+  background-color: lightgray;
+}
+
+.col {
+  background-color: royalblue;
+}
+
+.col-sm-2 {
+  background-color: skyblue;
+}
+
+#forecastHeader {
+  font-size: 25px;
+  font-weight: 600;
+}
+
+#searchArea {
+  background-color: lightpink;
+}
+
+button {
+  cursor: grab;
+}
+
+#previousCities {
+  background-color: lightcoral;
+}
