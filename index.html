@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./develop/style.css" />
+    <title>Rain or Shine</title>
+</head>
+
+<body>
+
+    <section>
+        <nav class="navbar navbar-dark bg-dark" style="justify-content: flex-end;" id="nav">
+            <span class="navbar-brand mb-0 h1" id="navTitle">Rain or Shine</span>
+        </nav>
+    </section>
+
+    <section class="row container-fluid">
+        <div class="col-sm-3">
+            <div class="row card">
+                <div class="card-body" id="searchArea">
+                    <div class="row">
+                        <div>
+                            <label>Search for a city</label>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="city name" aria-label="city name"
+                                aria-describedby="saveBtn">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button" id="searchBtn">Search</button>
+                                <button class="btn btn-outline-secondary" type="button" id="clearBtn">Clear</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row card">
+                <div class="card-body" id="previousCities">
+                    <h4>Previously searched cities</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-9">
+            <div class="row card">
+                <div class="card-body" id="cityInfo">
+                    <h2 class="card-title mb-3" id="cityName">City</h2>
+                    <h5 class="card-subtitle mb-3" id="cityLocation">USA</h5>
+                    <h5 class="card-subtitle mb-2" id="currentDateAndTime"></h5>
+                </div>
+                <div class="card-body" id="cityStats">
+                    <p id="currentTemp"><span>Temperature:</span></p>
+                    <p id="currentHumidity"><span>Humidity:</span></p>
+                    <p id="currentWindSpeed"><span>Wind Speed:</span></p>
+                    <p id="currentUvIndex"><span>UV Index:</span></p>
+                </div>
+            </div>
+
+            <div class="row" id="fiveDayForecast">
+                <div class="card col">
+                    <div class="card-body" id="forecastHeader">
+                        <p class="h4" id="forecastHeaderText">5 Day Weather Forecast</p>
+                    </div>
+                </div>
+                <div class="card col-sm-2">
+                    <div class="card-body" id="forecastOne">
+                        <p id="forecastOneDate">date</p>
+                        <p id="forecastOneForecast">sunny</p>
+                        <p id="forecastOneTemp"><span>Temp: </span>temp</p>
+                        <p id="forecastOneHumidity"><span>Humidity: </span>Hume</p>
+                    </div>
+                </div>
+                <div class="card col-sm-2">
+                    <div class="card-body" id="forecastTwo">
+                        <p id="forecastTwoDate">date</p>
+                        <p id="forecastTwoForecast">sunny</p>
+                        <p id="forecastTwoTemp"><span>Temp: </span>temp</p>
+                        <p id="forecastTwoHumidity"><span>Humidity: </span>hume</p>
+                    </div>
+                </div>
+                <div class="card col-sm-2">
+                    <div class="card-body" id="forecastThree">
+                        <p id="forecastThreeDate">date</p>
+                        <p id="forecastThreeForecast">sunny</p>
+                        <p id="forecastThreeTemp"><span>Temp: </span>temp</p>
+                        <p id="forecastThreeHumidity"><span>Humidity: </span>hume</p>
+                    </div>
+                </div>
+                <div class="card col-sm-2">
+                    <div class="card-body" id="forecastFour">
+                        <p id="forecastFourDate">date</p>
+                        <p id="forecastFourForecast">sunny</p>
+                        <p id="forecastFourTemp"><span>Temp: </span>temp</p>
+                        <p id="forecastFourHumidity"><span>Humidity: </span>hume</p>
+                    </div>
+                </div>
+                <div class="card col-sm-2">
+                    <div class="card-body" id="forecastFive">
+                        <p id="forecastFiveDate">date</p>
+                        <p id="forecastFiveForecast">sunny</p>
+                        <p id="forecastFiveTemp"><span>Temp: </span>temp</p>
+                        <p id="forecastFiveHumidity"><span>Humidity: </span>hume</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+        crossorigin="anonymous"></script>
+    <script src="./develop/script.js"></script>
+</body>
+
+</html>
