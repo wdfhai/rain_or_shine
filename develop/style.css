@@ -30,8 +30,9 @@ body {
   background-color: lightpink;
 }
 
-button {
-  cursor: grab;
+#searchBTn {
+  background-color: dodgerblue;
+  cursor: pointer;
 }
 
 #previousCities {
