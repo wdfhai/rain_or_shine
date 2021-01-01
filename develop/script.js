@@ -1,5 +1,5 @@
 
-$("#currentDateAndTime")[0].textContent = moment().format('LLLL');
+// $("#currentDateAndTime")[0].textContent = moment().format('LLLL');
 $("#forecastOneDate")[0].textContent = moment().add(1, 'd').format('ddd, MMM DD');
 $("#forecastTwoDate")[0].textContent = moment().add(2, 'd').format('ddd, MMM DD');
 $("#forecastThreeDate")[0].textContent = moment().add(3, 'd').format('ddd, MMM DD');
@@ -37,6 +37,11 @@ function search(event){
                     $("#cityLocation").html(response.sys.country);
                     var tempK = parseInt(responseOneCall.current.temp);
                     var tempC = Math.round(((tempK - 273.15)*(9/5))+32);
+                    var icon = responseOneCall.current.weather[0].icon;
+                    var utcOffset = ((responseOneCall.timezone_offset)/60);
+                    console.log(utcOffset);
+                    $("#currentDateAndTime")[0].textContent = moment().utcOffset(utcOffset).format('LLLL');
+                    $("#currentWeather").attr("src", "http://openweathermap.org/img/wn/"+icon+"@2x.png");
                     $("#currentTemp").text("Temperature " + tempC + " °F");
                     $("#currentWindSpeed").text("Wind Speed: " + responseOneCall.current.wind_speed + " mph");
                     $("#currentHumidity").text("Humidity: " + responseOneCall.current.humidity + " %");
@@ -63,9 +68,18 @@ function search(event){
     test[0].textContent = searchedCity;
     previousCitiesList.append(test[0]);
     $(".form-control")[0].value = "";
+    icons();
     } else {
         alert("You need to enter a city name.");
     };
+}
+
+function icons (){
+    var cW = $("#currentWeather")[0];
+    var cWT = cW.textContent;
+    var cWTA = cWT.split("");
+    console.log(cWT);
+    console.log(cWTA);
 }
 
 $("#searchBtn").on('click', search);
