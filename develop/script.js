@@ -1,3 +1,4 @@
+
 var currentCity = "";
 var searchedCity = "";
 var previousCities = [];
@@ -36,7 +37,26 @@ function search(event){
                     $("#currentTemp").text("Temperature " + tempC + " °F");
                     $("#currentWindSpeed").text("Wind Speed: " + responseOneCall.current.wind_speed + " mph");
                     $("#currentHumidity").text("Humidity: " + responseOneCall.current.humidity + " %");
-                    $("#currentUvIndex").text("UV Index: " + responseOneCall.current.uvi);
+                    var uviValue = responseOneCall.current.uvi;
+                    var uviBtn = $("<button/>", {"class":"btn-sm", type:"button", "id":"uviValueBtn"});
+                    uviBtn[0].textContent = uviValue;
+                    uviBtn[0].disabled = true;
+                    if (uviValue <= 2){
+                        uviBtn[0].style.backgroundColor = 'lightgreen';
+                        $("#currentUvIndex").append(uviBtn[0]);
+                    } else if ((uviValue >= 2) && (uviValue <= 5)) {
+                        uviBtn[0].style.backgroundColor = 'yellow';
+                        $("#currentUvIndex").append(uviBtn[0]);
+                    } else if ((uviValue >= 6) && (uviValue <= 7)){
+                        uviBtn[0].style.backgroundColor = 'orange';
+                        $("#currentUvIndex").append(uviBtn[0]);
+                    } else if ((uviValue >= 8) && (uviValue <= 10)) {
+                        uviBtn[0].style.backgroundColor = 'red';
+                        $("#currentUvIndex").append(uviBtn[0]);
+                    } else {
+                        uviBtn[0].style.backgroundColor = 'violet';
+                        $("#currentUvIndex").append(uviBtn[0]);
+                    };
                     $("#fiveDayForecast")[0].style.display = "flex";
                     $("#forecastOneDate")[0].textContent = moment().utcOffset(utcOffset).add(1, 'd').format('ddd, MMM DD');
                     $("#forecastOneWeather").attr("src", "http://openweathermap.org/img/wn/"+responseOneCall.daily[0].weather[0].icon+"@2x.png");
@@ -66,19 +86,19 @@ function search(event){
     dynBtn[0].textContent = searchedCity;
     previousCitiesList.append(dynBtn[0]);
     $(".form-control")[0].value = "";
-    icons();
+    // icons();
     } else {
         alert("You need to enter a city name.");
     };
 }
 
-function icons (){
-    var cW = $("#currentWeather")[0];
-    var cWT = cW.textContent;
-    var cWTA = cWT.split("");
-    console.log(cWT);
-    console.log(cWTA);
-}
+// function icons (){
+//     var cW = $("#currentWeather")[0];
+//     var cWT = cW.textContent;
+//     var cWTA = cWT.split("");
+//     console.log(cWT);
+//     console.log(cWTA);
+// }
 
 $("#searchBtn").on('click', search);
 $("#previousCity").on('click', console.log('previous'));
