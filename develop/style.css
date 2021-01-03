@@ -1,33 +1,46 @@
 body {
+  font-family: "Montserrat", sans-serif;
 }
 
 #navTitle {
   font-size: 40px;
+  color: orange;
+}
+
+.container-fluid {
+  padding-right: 0px;
+  margin-right: 0px;
 }
 
 #cityInfo {
+  display: block;
   background-color: grey;
+  color: white;
 }
 
 #cityStats {
+  display: block;
   background-color: lightgray;
 }
 
 .col {
-  background-color: royalblue;
+  background-color: cornflowerblue;
 }
 
 .col-sm-2 {
   background-color: skyblue;
 }
 
-#forecastHeader {
+#forecastHeaderText {
   font-size: 25px;
-  font-weight: 600;
+  font-weight: bold;
+  text-align: center;
+  line-height: 50px;
 }
 
 #searchArea {
-  background-color: lightpink;
+  background-color: cadetblue;
+  color: white;
 }
 
 #searchBTn {
@@ -36,5 +49,5 @@ body {
 }
 
 #previousCities {
-  background-color: lightcoral;
+  background-color: darkseagreen;
 }
