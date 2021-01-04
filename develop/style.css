@@ -55,3 +55,9 @@ body {
 .btn-lg {
   background-color: cadetblue;
 }
+
+#eraseStorage {
+  background-color: darkslategray;
+  color: white;
+  text-align: center;
+}
