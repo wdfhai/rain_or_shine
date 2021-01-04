@@ -4,14 +4,15 @@ const searchedCity = "";
 const previousCities = [];
 const previousCitiesList = $("#previousCities")[0];
 const previousCitiesButtons = $("#previousCitiesButtons");
-const storedCities = [];
+var storedCities = JSON.parse(localStorage.getItem('savedCities')) || [];
 
 const queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + searchedCity + "&appid=0d98e0477d04a50c6eee875a618c9c74"
 
-function previousSearches(){
-    if (storedCities.length > 0){
+function previousSearches(savedCities){
+    console.log(savedCities);
+    if (savedCities.length > 0){
         previousCitiesButtons.empty();
-        storedCities.forEach(function(item){
+        savedCities.forEach(function(item){
             const dynBtn = $("<div/>", {"class":"button btn-lg mb-2", type:"button", "id":"previousCity"});
             dynBtn[0].textContent = item;
             previousCitiesButtons.append(dynBtn);
@@ -19,7 +20,7 @@ function previousSearches(){
     } else {
         console.log('no previous searches');
     }
-}
+};
 
 function search(){
     const searchedCity = ($(".form-control")[0].value).toUpperCase();
@@ -35,7 +36,11 @@ function search(){
             return;
         };
         console.log(storedCities);
-        previousSearches();
+        const savedCities = JSON.parse(localStorage.getItem('savedCities')) || [];
+        savedCities.push(searchedCity);
+        localStorage.setItem('savedCities', JSON.stringify(savedCities));
+        console.log(savedCities);
+        previousSearches(savedCities);
         $(".form-control")[0].value = "";
         ajax(searchedCity);
     };
@@ -123,7 +128,16 @@ function repeatSearch (){
     ajax(searchedCity);
 };
 
+function clear(){
+    console.log('clear');
+    localStorage.clear();
+    previousCitiesButtons.empty()
+    storedCities = [];
+}
+
 
 $("#searchBtn").on('click', search);
 
 $('body').on('click', '.btn-lg', repeatSearch);
+
+$("#eraseStorage").on('click', clear);
