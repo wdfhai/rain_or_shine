@@ -1,18 +1,18 @@
 
-var currentCity = "";
-var searchedCity = "";
-var previousCities = [];
-var previousCitiesList = $("#previousCities")[0];
-var previousCitiesButtons = $("#previousCitiesButtons");
-var storedCities = [];
+const currentCity = "";
+const searchedCity = "";
+const previousCities = [];
+const previousCitiesList = $("#previousCities")[0];
+const previousCitiesButtons = $("#previousCitiesButtons");
+const storedCities = [];
 
-var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + searchedCity + "&appid=0d98e0477d04a50c6eee875a618c9c74"
+const queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + searchedCity + "&appid=0d98e0477d04a50c6eee875a618c9c74"
 
 function previousSearches(){
     if (storedCities.length > 0){
         previousCitiesButtons.empty();
         storedCities.forEach(function(item){
-            var dynBtn = $("<div/>", {"class":"button btn-lg mb-2", type:"button", "id":"previousCity"});
+            const dynBtn = $("<div/>", {"class":"button btn-lg mb-2", type:"button", "id":"previousCity"});
             dynBtn[0].textContent = item;
             previousCitiesButtons.append(dynBtn);
         })
@@ -22,7 +22,7 @@ function previousSearches(){
 }
 
 function search(){
-    var searchedCity = ($(".form-control")[0].value).toUpperCase();
+    const searchedCity = ($(".form-control")[0].value).toUpperCase();
     console.log(searchedCity)
     if (searchedCity === ""){
         alert("You need to enter a city name.");
@@ -52,8 +52,8 @@ function ajax(searchedCity){
             if (response === null){
                 alert("not found")
             } else {
-                var lon = parseInt(response.coord.lon);
-                var lat = parseInt(response.coord.lat);
+                const lon = parseInt(response.coord.lon);
+                const lat = parseInt(response.coord.lat);
             $.ajax({
                 url: "http://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&appid=0d98e0477d04a50c6eee875a618c9c74",
                 method: "GET"
@@ -61,17 +61,17 @@ function ajax(searchedCity){
                 .then(function(responseOneCall) {
                     $("#cityName").html(response.name);
                     $("#cityLocation").html(response.sys.country);
-                    var tempK = parseInt(responseOneCall.current.temp);
-                    var tempC = Math.round(((tempK - 273.15)*(9/5))+32);
-                    var icon = responseOneCall.current.weather[0].icon;
-                    var utcOffset = ((responseOneCall.timezone_offset)/60);
+                    const tempK = parseInt(responseOneCall.current.temp);
+                    const tempC = Math.round(((tempK - 273.15)*(9/5))+32);
+                    const icon = responseOneCall.current.weather[0].icon;
+                    const utcOffset = ((responseOneCall.timezone_offset)/60);
                     $("#currentDateAndTime")[0].textContent = moment().utcOffset(utcOffset).format('LLLL');
                     $("#currentWeather").attr("src", "http://openweathermap.org/img/wn/"+icon+"@2x.png");
                     $("#currentTemp").text("Temperature " + tempC + " °F");
                     $("#currentWindSpeed").text("Wind Speed: " + responseOneCall.current.wind_speed + " mph");
                     $("#currentHumidity").text("Humidity: " + responseOneCall.current.humidity + " %");
-                    var uviValue = responseOneCall.current.uvi;
-                    var uviBtn = $("<button/>", {"class":"btn-sm", type:"button", "id":"uviValueBtn"});
+                    const uviValue = responseOneCall.current.uvi;
+                    const uviBtn = $("<button/>", {"class":"btn-sm", type:"button", "id":"uviValueBtn"});
                     uviBtn[0].textContent = uviValue;
                     uviBtn[0].disabled = true;
                     $("#currentUvIndex").empty();
@@ -120,7 +120,6 @@ function ajax(searchedCity){
 
 function repeatSearch (){
     const searchedCity = $(this)[0].textContent;
-    console.log(searchedCity);
     ajax(searchedCity);
 };
 
