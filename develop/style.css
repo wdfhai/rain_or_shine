@@ -1,10 +1,11 @@
 body {
   font-family: "Montserrat", sans-serif;
+  color: white;
 }
 
 #navTitle {
   font-size: 40px;
-  color: orange;
+  font-weight: bolder;
 }
 
 .container-fluid {
@@ -14,13 +15,12 @@ body {
 
 #cityInfo {
   display: block;
-  background-color: grey;
-  color: white;
+  background-color: rgb(176, 134, 215);
 }
 
 #cityStats {
   display: block;
-  background-color: lightgray;
+  background-color: rgb(214, 185, 238);
 }
 
 .col {
@@ -40,7 +40,6 @@ body {
 
 #searchArea {
   background-color: cadetblue;
-  color: white;
 }
 
 #searchBTn {
@@ -48,6 +47,11 @@ body {
   cursor: pointer;
 }
 
-#previousCities {
-  background-color: darkseagreen;
+#previousContainer {
+  background-color: teal;
+  padding-top: 15px;
+}
+
+.btn-lg {
+  background-color: cadetblue;
 }
