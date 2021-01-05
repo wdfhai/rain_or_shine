@@ -9,7 +9,6 @@ var savedCities = JSON.parse(localStorage.getItem('savedCities')) || [];
 const queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + searchedCity + "&appid=0d98e0477d04a50c6eee875a618c9c74"
 
 function previousSearches(savedCities){
-    console.log(savedCities);
     if (savedCities.length > 0){
         previousCitiesButtons.empty();
         savedCities.forEach(function(item){
@@ -18,12 +17,11 @@ function previousSearches(savedCities){
             previousCitiesButtons.append(dynBtn);
         })
         const lastCityIndex = (parseInt(savedCities.length)) - 1;
-        console.log(lastCityIndex);
         searchedCity = savedCities[lastCityIndex];
-        console.log(searchedCity);
         ajax(searchedCity);
     } else {
-        console.log('no previous searches');
+        alert('no previous searches');
+        return;
     }
 };
 
@@ -32,7 +30,6 @@ previousSearches(savedCities);
 function search(event){
     event.preventDefault();
     var searchedCity = ($("#searchBox")[0].value).toUpperCase();
-    console.log(searchedCity)
     if (searchedCity === ""){
         alert("You need to enter a city name.");
     } else {
@@ -42,15 +39,13 @@ function search(event){
             alert('City previously searched');
             $(".form-control")[0].value = "";
             return;
-        };
-        console.log(storedCities);
+        }; 
         const newDynBtn = $("<div/>", {"class":"button btn-lg mb-2", type:"button", "id":"previousCity"});
         newDynBtn[0].textContent = searchedCity;
         previousCitiesButtons.append(newDynBtn);
         savedCities = JSON.parse(localStorage.getItem('savedCities')) || [];
         savedCities.push(searchedCity);
         localStorage.setItem('savedCities', JSON.stringify(savedCities));
-        console.log(savedCities);
         $(".form-control")[0].value = "";
         ajax(searchedCity);
     };
@@ -138,7 +133,6 @@ function repeatSearch (){
 };
 
 function clear(){
-    console.log('clear');
     localStorage.clear();
     previousCitiesButtons.empty()
     storedCities = [];
@@ -150,7 +144,3 @@ $('#searchBtn').on('click', search);
 $('body').on('click', '.btn-lg', repeatSearch);
 
 $("#eraseStorage").on('click', clear);
-
-window.onload = (event) => {
-    console.log('page is fully loaded');
-  }
