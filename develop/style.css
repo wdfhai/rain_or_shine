@@ -20,7 +20,7 @@ body {
 
 #cityStats {
   display: block;
-  background-color: rgb(214, 185, 238);
+  background-color: rgb(207, 169, 238);
 }
 
 .col {
@@ -28,7 +28,7 @@ body {
 }
 
 .col-sm-2 {
-  background-color: skyblue;
+  background-color: rgb(90, 187, 225);
 }
 
 #forecastHeaderText {
