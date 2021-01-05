@@ -1,6 +1,5 @@
-
 const currentCity = "";
-const searchedCity = "";
+var searchedCity = "";
 const previousCities = [];
 const previousCitiesList = $("#previousCities")[0];
 const previousCitiesButtons = $("#previousCitiesButtons");
@@ -18,6 +17,11 @@ function previousSearches(savedCities){
             dynBtn[0].textContent = item;
             previousCitiesButtons.append(dynBtn);
         })
+        const lastCityIndex = (parseInt(savedCities.length)) - 1;
+        console.log(lastCityIndex);
+        searchedCity = savedCities[lastCityIndex];
+        console.log(searchedCity);
+        ajax(searchedCity);
     } else {
         console.log('no previous searches');
     }
@@ -25,8 +29,9 @@ function previousSearches(savedCities){
 
 previousSearches(savedCities);
 
-function search(){
-    const searchedCity = ($(".form-control")[0].value).toUpperCase();
+function search(event){
+    event.preventDefault();
+    var searchedCity = ($("#searchBox")[0].value).toUpperCase();
     console.log(searchedCity)
     if (searchedCity === ""){
         alert("You need to enter a city name.");
@@ -81,9 +86,8 @@ function ajax(searchedCity){
                     $("#currentWindSpeed").text("Wind Speed: " + responseOneCall.current.wind_speed + " mph");
                     $("#currentHumidity").text("Humidity: " + responseOneCall.current.humidity + " %");
                     const uviValue = responseOneCall.current.uvi;
-                    const uviBtn = $("<button/>", {"class":"btn-sm", type:"button", "id":"uviValueBtn"});
+                    const uviBtn = $("<button/>", {"class":"btn-sm", type:"button", "id":"uviValueBtn",  "data-toggle":"modal", "data-target":"#uviModal"});
                     uviBtn[0].textContent = uviValue;
-                    uviBtn[0].disabled = true;
                     $("#currentUvIndex").empty();
                     if (uviValue <= 2){
                         uviBtn[0].style.backgroundColor = 'lightgreen';
@@ -141,7 +145,7 @@ function clear(){
 }
 
 
-$("#searchBtn").on('click', search);
+$('#searchBtn').on('click', search);
 
 $('body').on('click', '.btn-lg', repeatSearch);
 
