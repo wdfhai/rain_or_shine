@@ -6,7 +6,7 @@ const previousCitiesButtons = $("#previousCitiesButtons");
 var storedCities = JSON.parse(localStorage.getItem('savedCities')) || [];
 var savedCities = JSON.parse(localStorage.getItem('savedCities')) || [];
 
-const queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + searchedCity + "&appid=0d98e0477d04a50c6eee875a618c9c74"
+const queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + searchedCity + "&appid=0d98e0477d04a50c6eee875a618c9c74"
 
 function previousSearches(savedCities){
     console.log(savedCities);
@@ -70,7 +70,7 @@ function ajax(searchedCity){
                 const lon = parseInt(response.coord.lon);
                 const lat = parseInt(response.coord.lat);
             $.ajax({
-                url: "http://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&appid=0d98e0477d04a50c6eee875a618c9c74",
+                url: "https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&appid=0d98e0477d04a50c6eee875a618c9c74",
                 method: "GET"
                 })
                 .then(function(responseOneCall) {
