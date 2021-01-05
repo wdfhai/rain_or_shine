@@ -7,6 +7,7 @@ Welcome to my repo for my weather dashboard. This is a web-based weather data ac
 ## Instructions
 
 - Enter a city name in the Search box to search. (Due to API limitations, not all cities will be available.)
+- Click on the color coded UV Index button to open a guide for the color and values of UV Indices.
 - Use the city buttons under the "Previously" section to look up a previously searched city.
 - Use the 'clear' button to clear all previously searched city buttons and your local storage.
 
