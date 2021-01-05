@@ -23,6 +23,10 @@ body {
   background-color: rgb(207, 169, 238);
 }
 
+.modal {
+  color: black;
+}
+
 .col {
   background-color: cornflowerblue;
 }
@@ -42,8 +46,8 @@ body {
   background-color: cadetblue;
 }
 
-#searchBTn {
-  background-color: dodgerblue;
+#searchBtn,
+#eraseStorage {
   cursor: pointer;
 }
 
