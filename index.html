@@ -5,10 +5,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="./develop/style.css" />
     <title>Rain or Shine</title>
 </head>
@@ -25,17 +25,13 @@
         <div class="col-sm-3">
             <div class="row card">
                 <div class="card-body" id="searchArea">
-                    <div class="row">
-                        <div>
-                            <label>Search for a city</label>
-                        </div>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="city name" aria-label="city name"
-                                aria-describedby="saveBtn">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary fa fa-search" type="button" id="searchBtn"></button>
-                            </div>
-                        </div>
+                    <div class="row input-group">
+                        <form id="searchHistory">
+                            <label for="searchBox">Search for a city</label>
+                            <input id="searchBox" type="text" class="form-control" placeholder="city name"
+                                autocomplete="off"><br>
+                            <input class="btn-info" type="submit" id="searchBtn" value="Search">
+                        </form>
                     </div>
                 </div>
             </div>
@@ -109,6 +105,32 @@
                         <p id="forecastFiveForecast"><img id="forecastFiveWeather"></p>
                         <p id="forecastFiveTemp"></p>
                         <p id="forecastFiveHumidity"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="modal fade" id="uviModal" tabindex="-1" role="dialog" aria-labelledby="uviModalTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="uviModalTitle" style="font-weight: bolder;">UV Index Guide</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p style="color: green;">Green (0-2) = Low</p>
+                        <p style="color: rgb(209, 213, 0);">Yellow (3-5) = Moderate</p>
+                        <p style="color: orange;">Orange (6-7) = High</p>
+                        <p style="color: red;">Red (8-10) = Very high</p>
+                        <p style="color: violet;">Violet (11 and above) = Extremely high</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
