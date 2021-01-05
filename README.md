@@ -13,7 +13,7 @@ Welcome to my repo for my weather dashboard. This is a web-based weather data ac
 
 ## Preview
 
-<img src='./assets/preview.png' alt='weather dashboard preview'>
+<img src='./assets/preview2.png' alt='weather dashboard preview'>
 
 ## Deployed Link
 
