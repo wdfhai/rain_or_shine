@@ -17,7 +17,7 @@ Welcome to my repo for my weather dashboard. This is a web-based weather data ac
 
 ## Deployed Link
 
-https://https://wdfhai.github.io/rain_or_shine/
+https://wdfhai.github.io/rain_or_shine/
 
 ## Special Mention
 
